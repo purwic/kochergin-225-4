@@ -40,7 +40,7 @@ namespace _5
 
                 double alpha = Math.Log(1 - p / 5, 1 + p / 100);
 
-                K.Content = $"не работает";
+                K.Content = $"не успеваю сделать, не работает";
 
 
 
