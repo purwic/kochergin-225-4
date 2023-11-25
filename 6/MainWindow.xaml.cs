@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _5
+namespace _6
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,53 +25,43 @@ namespace _5
             InitializeComponent();
         }
 
+
         private void compute()
         {
 
             try
             {
 
-                double p = double.Parse(P.Text);
+                int n = int.Parse(N.Text);
 
-                if (0 < p && p < 50) { }
+                if (n > 0) { }
 
                 else { throw new ArgumentOutOfRangeException(); }
 
 
-                double q = 1 + p / 100;
+                bool result = false;
 
-
-                double S_(int n)
+                foreach (char symbol in N.Text)
                 {
-                    return (10 * (1 - Math.Pow(q, n)) / (1 - q));
+                    if (int.Parse($"{symbol}") % 2 == 0)
+                    {
+                        result = true;
+                    }
                 }
 
-
-                int k = 0;
-
-                for (int i = 1; S_(i) <= 200; i++)
-                {
-                    k = i + 1;
-                }
-
-                K.Content = $"{k}";
-
-                S.Content = $"{S_(k + 1)}";
-
-
+                Result.Content = $"{result}";
 
             }
 
             catch
             {
-                K.Content = "-";
-                S.Content = "-";
+                Result.Content = "-";
             }
 
         }
 
 
-        private void P_TextChanged(object sender, TextChangedEventArgs e)
+        private void N_TextChanged(object sender, TextChangedEventArgs e)
         {
             compute();
         }
